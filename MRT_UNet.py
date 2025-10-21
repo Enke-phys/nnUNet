@@ -2,6 +2,9 @@ import torch
 import torch.nn as nn
 import nibabel as nib
 import numpy as np
+from dotenv import load_dotenv
+from pathlib import Path
+load_dotenv()
 
 # 1. Bild und Label laden
 img = nib.load("image.nii.gz").get_fdata()
