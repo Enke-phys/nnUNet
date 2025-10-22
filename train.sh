@@ -32,6 +32,7 @@ nnUNetv2_predict \
   -i nnUNetDataset/nnUNet_raw/Dataset001_MRT/imagesTs \
   -o nnUNetDataset/predicted_test_images \
   -d Dataset001_MRT \
+  -f 0 \
   -c 3d_fullres
 
 
