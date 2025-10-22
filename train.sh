@@ -23,3 +23,24 @@ CUDA_VISIBLE_DEVICES=1 nnUNetv2_train DATASET_NAME_OR_ID 2d 1 [--npz] & # train 
 CUDA_VISIBLE_DEVICES=2 nnUNetv2_train DATASET_NAME_OR_ID 2d 2 [--npz] & # train on GPU 2
 CUDA_VISIBLE_DEVICES=3 nnUNetv2_train DATASET_NAME_OR_ID 2d 3 [--npz] & # train on GPU 3
 CUDA_VISIBLE_DEVICES=4 nnUNetv2_train DATASET_NAME_OR_ID 2d 4 [--npz] & # train on GPU 4
+
+#Find best configuration
+nnUNetv2_predict -i INPUT_FOLDER -o OUTPUT_FOLDER -d DATASET_NAME_OR_ID -c CONFIGURATION --save_probabilities
+
+#Interference
+nnUNetv2_predict \
+  -i nnUNetDataset/nnUNet_raw/Dataset001_MRT/imagesTs \
+  -o nnUNetDataset/predicted_test_images \
+  -d Dataset001_MRT \
+  -c 3d_fullres
+
+
+#Postprocessing
+nnUNetv2_apply_postprocessing \
+  -i nnUNetDataset/nnUNet_results/nnUNetTrainer__nnUNetPlans__3d_fullres/Dataset001_MRT/fold_0/validation_raw \
+  -o nnUNetDataset/nnUNet_results/nnUNetTrainer__nnUNetPlans__3d_fullres/Dataset001_MRT/fold_0/validation_postprocessed \
+  --pp_pkl_file nnUNetDataset/nnUNet_results/nnUNetTrainer__nnUNetPlans__3d_fullres/Dataset001_MRT/postprocessing.pkl \
+  -plans_json nnUNetDataset/nnUNet_results/nnUNetTrainer__nnUNetPlans__3d_fullres/Dataset001_MRT/plans_3D_fullres_plans_...json \
+  -dataset_json nnUNetDataset/nnUNet_results/nnUNetTrainer__nnUNetPlans__3d_fullres/Dataset001_MRT/dataset.json
+
+
