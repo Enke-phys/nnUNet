@@ -24,9 +24,17 @@ CUDA_VISIBLE_DEVICES=3 nnUNetv2_train DATASET_NAME_OR_ID 2d 3 --npz & # train on
 CUDA_VISIBLE_DEVICES=4 nnUNetv2_train DATASET_NAME_OR_ID 2d 4 --npz & # train on GPU 4
 
 #Find best configuration
-nnUNetv2_predict -i INPUT_FOLDER -o OUTPUT_FOLDER -d DATASET_NAME_OR_ID -c CONFIGURATION --save_probabilities
+nnUNetv2_find_best_configuration 1 -c 3d_fullres 
 
-#Interference
+# Dice berechnung
+nnUNetv2_predict \
+-i $nnUNet_raw/$dataset_name/imagesTs \
+-o $nnUNet_results/$dataset_name/nnUNetTrainer__nnUNetPlans__3d_fullres/predicted_test_images \
+-d $dataset_name \
+-f 0 \
+-c 3d_fullres
+
+#Inferenz
 nnUNetv2_predict \
   -i nnUNetDataset/nnUNet_raw/Dataset001_MRT/imagesTs \
   -o nnUNetDataset/predicted_test_images \
