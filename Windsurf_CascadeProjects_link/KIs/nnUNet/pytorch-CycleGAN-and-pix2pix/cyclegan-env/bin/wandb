@@ -1,0 +1,9 @@
+#!/bin/sh
+'''exec' "/Users/enke/Documents/Test MRT/CascadeProjects/windsurf-project/nnUNet/pytorch-CycleGAN-and-pix2pix/cyclegan-env/bin/python3" "$0" "$@"
+' '''
+import sys
+from wandb.cli.cli import cli
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(cli())
