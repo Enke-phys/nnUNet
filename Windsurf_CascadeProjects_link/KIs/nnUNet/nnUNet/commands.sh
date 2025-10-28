@@ -8,4 +8,4 @@ echo "Training abgeschlossen!"
 # python3 test.py --dataroot ./datasets/t1t2 --name t1t2_cyclegan --model cycle_gan --direction AtoB --input_nc 1 --output_nc 1 --num_threads 0 --batch_size 1 --no_dropout --preprocess resize_and_crop --load_size 320 --crop_size 320
 # echo "Starte Inferenz B->A (T1->T2)"
 # python3 test.py --dataroot ./datasets/t1t2 --name t1t2_cyclegan --model cycle_gan --direction BtoA --input_nc 1 --output_nc 1 --num_threads 0 --batch_size 1 --no_dropout --preprocess resize_and_crop --load_size 320 --crop_size 320
-# echo "Inferenzen abgeschlossen"
+# echo "InferenzenOn branch main
